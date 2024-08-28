@@ -77,5 +77,3 @@ function updatePokemon() {
     document.getElementById("pokemon-description").innerText = pokedex[this.id]["description"]
 }
 
-function findPokemon
-//button highlight
