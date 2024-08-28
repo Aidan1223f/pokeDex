@@ -1,10 +1,6 @@
 const pokemonCount = 151;
 var pokedex = {};
 window.onload = async function() {
-    document.getElementById("pokemonName").hidden=true;
-    document.getElementById("pokemon-img").hidden =true;
-    document.getElementById("pokemon-description").hidden = true;
-
     for (let i = 1; i <= pokemonCount; i++) {
         await getPokemon(i);
         
@@ -14,13 +10,9 @@ window.onload = async function() {
         pokemon.classList.add("pokemon-name");
         pokemon.addEventListener("click", updatePokemon);
         document.getElementById("pokemon-list").append(pokemon);
-
         
-
             pokemon.addEventListener("click", () =>{
-                document.getElementById("pokemonName").hidden=false;
-                document.getElementById("pokemon-img").hidden =false;
-                document.getElementById("pokemon-description").hidden = false;
+             
 
                 document.querySelector(".special")?.classList.remove("special")
                 pokemon.classList.add("special");
