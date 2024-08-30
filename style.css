@@ -76,6 +76,10 @@ body {
     margin-top: 10px;
 }
 
+#pokemon-search{
+    border-radius: 10px;
+}
+
 .type-box {
     border: 1px solid;
     border-radius: 10px;

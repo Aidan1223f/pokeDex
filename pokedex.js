@@ -1,6 +1,10 @@
 const pokemonCount = 151;
 var pokedex = {};
+
+
 window.onload = async function() {
+    const searchInput = document.getElementById("pokemon-search");
+
     for (let i = 1; i <= pokemonCount; i++) {
         await getPokemon(i);
         
@@ -10,7 +14,7 @@ window.onload = async function() {
         pokemon.classList.add("pokemon-name");
         pokemon.addEventListener("click", updatePokemon);
         document.getElementById("pokemon-list").append(pokemon);
-        
+
             pokemon.addEventListener("click", () =>{
              
 
@@ -23,12 +27,32 @@ window.onload = async function() {
                 }
                 name.innerText =  i.toString() + ". " + pokedex[i]["name"].toUpperCase();
             });
-       
-        
     }
+    const checkUserInput = () => {
+        if(!searchInput.value || searchInput === ""){
+            alert("Please enter Pokemon");
+            return;
+        }
+        console.log(searchInput.value);
+    }
+
+    searchInput.addEventListener("keyup", e => {
+        let currentValue = e.target.value.toUpperCase();
+        let pokemons = document.querySelectorAll('.pokemon-name');
+        pokemons.forEach(pokemon => {
+            let pokemonName = pokemon.innerText.slice(3);
+            console.log(pokemon)
+            if (pokemonName.textContent.toUpperCase().includes(currentValue)) {
+                pokemon.parentNode.style.display = 'block';
+            } else{
+                pokemon.parentNode.style.display = 'none';
+            }
+        });
+    });
 }
 
    
+
 
 async function getPokemon(num) {
     let url ="https://pokeapi.co/api/v2/pokemon/" + num.toString();
