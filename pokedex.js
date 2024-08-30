@@ -39,16 +39,17 @@ window.onload = async function() {
     searchInput.addEventListener("keyup", e => {
         let currentValue = e.target.value.toUpperCase();
         let pokemons = document.querySelectorAll('.pokemon-name');
+    
         pokemons.forEach(pokemon => {
-            let pokemonName = pokemon.innerText.slice(3);
-            console.log(pokemon)
-            if (pokemonName.textContent.toUpperCase().includes(currentValue)) {
-                pokemon.parentNode.style.display = 'block';
-            } else{
-                pokemon.parentNode.style.display = 'none';
+            let pokemonName = pokemon.innerText.slice(3); // Remove the number prefix
+            if (pokemonName.toUpperCase().includes(currentValue)) {
+                pokemon.style.display = 'block'; // Show the matching Pokémon
+            } else {
+                pokemon.style.display = 'none'; // Hide non-matching Pokémon
             }
         });
     });
+    
 }
 
    
